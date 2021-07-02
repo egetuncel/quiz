@@ -13,6 +13,8 @@
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		5169666BC3E9AA3AFD7467D2 /* libPods-quiz.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FC9E157CC298BCB54FC1BCEA /* libPods-quiz.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		AD3BE60E268BC31D00014D8E /* Ionicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AD3BE60C268BC31D00014D8E /* Ionicons.ttf */; };
+		AD3BE60F268BC31D00014D8E /* Zocial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AD3BE60D268BC31D00014D8E /* Zocial.ttf */; };
 		D9555B21B5610EB8E29AC635 /* libPods-quiz-quizTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DB883AA2C74D5AA481F364CE /* libPods-quiz-quizTests.a */; };
 /* End PBXBuildFile section */
 
@@ -38,6 +40,8 @@
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = quiz/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = quiz/main.m; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = quiz/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		AD3BE60C268BC31D00014D8E /* Ionicons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Ionicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Ionicons.ttf"; sourceTree = "<group>"; };
+		AD3BE60D268BC31D00014D8E /* Zocial.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Zocial.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Zocial.ttf"; sourceTree = "<group>"; };
 		AEFE29635DB72E59C0F587A2 /* Pods-quiz-quizTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-quiz-quizTests.debug.xcconfig"; path = "Target Support Files/Pods-quiz-quizTests/Pods-quiz-quizTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D158AA35B3DEBBDA6B50578F /* Pods-quiz-quizTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-quiz-quizTests.release.xcconfig"; path = "Target Support Files/Pods-quiz-quizTests/Pods-quiz-quizTests.release.xcconfig"; sourceTree = "<group>"; };
 		DB883AA2C74D5AA481F364CE /* libPods-quiz-quizTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-quiz-quizTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -86,6 +90,7 @@
 		13B07FAE1A68108700A75B9A /* quiz */ = {
 			isa = PBXGroup;
 			children = (
+				AD3BE60B268BC28B00014D8E /* Fonts */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
@@ -114,7 +119,6 @@
 				AEFE29635DB72E59C0F587A2 /* Pods-quiz-quizTests.debug.xcconfig */,
 				D158AA35B3DEBBDA6B50578F /* Pods-quiz-quizTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -147,6 +151,15 @@
 				00E356EE1AD99517003FC87E /* quizTests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		AD3BE60B268BC28B00014D8E /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				AD3BE60C268BC31D00014D8E /* Ionicons.ttf */,
+				AD3BE60D268BC31D00014D8E /* Zocial.ttf */,
+			);
+			name = Fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -243,8 +256,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AD3BE60F268BC31D00014D8E /* Zocial.ttf in Resources */,
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				AD3BE60E268BC31D00014D8E /* Ionicons.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -561,7 +576,7 @@
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = "";
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -626,7 +641,7 @@
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = "";
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
