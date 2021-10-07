@@ -6,12 +6,12 @@ import { createStackNavigator } from '@react-navigation/stack';
 import Icon from "react-native-vector-icons/Ionicons"
 import History from './History';
 import HomeScreen from './HomeScreen';
-import Settings from './Settings';
-
+import Settings from "./Settings"
+import Quiz from './Quiz';
 
 const Tab = createBottomTabNavigator();
 const Main = createStackNavigator();
-const Final = createStackNavigator();
+
 
 
 
@@ -59,7 +59,7 @@ export default function Home( ) {
   return(
     <Main.Navigator mode="modal">
         <Main.Screen name="Footer" component={Bottom} options={{ headerShown: false }}/>
-        
+        <Main.Screen name="Quiz" component={Quiz} options={{ headerShown: false}}/>
         
   
       </Main.Navigator>

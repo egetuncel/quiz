@@ -1,22 +1,21 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import {
   StyleSheet, Text, View, TextInput, ScrollView, TouchableOpacity, SafeAreaView,
-  Keyboard, TouachableWi
+  
 } from 'react-native'
 import Icon from "react-native-vector-icons/Ionicons"
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
-import HomeStack from './HomeStack';
+
+import { AuthContext } from './AuthProvider';
 
 export default function Signin({ navigation }) {
+  const [email, setEmail] = useState();
+  const [password, setPassword] = useState();
 
+  const {login} = useContext(AuthContext);
   const [state, setState] = useState(true);
 
   const changeIcon = () => {
-    // this.setState(prevState => ({
-    //   icon: prevState.icon === "eye-outline" ? "eye-off-outline" : "eye-outline",
-    //   password: !prevState.password
-    // }));
+    
     setState(!state);
   }
   const goToSignUp = () => {
@@ -25,10 +24,7 @@ export default function Signin({ navigation }) {
   const goToForgot = () => {
     navigation.navigate('Forgot');
   }
-  const goToHome = () => {
-    navigation.navigate("Home")
-    
-  }
+
 
 
   return (
@@ -40,16 +36,32 @@ export default function Signin({ navigation }) {
 
           <View style={styles.view} >
             <Icon name="mail-outline" size={20} color={"#009578"} ></Icon>
-            <TextInput style={styles.input} placeholder={"Email"} keyboardType={"email-address"} autoCapitalize="none"></TextInput>
+            <TextInput 
+              value={email}
+              style={styles.input} 
+              placeholder={"Email"} 
+              keyboardType={"email-address"} 
+              autoCapitalize="none"
+              onChangeText={(userEmail) => setEmail(userEmail)} ></TextInput>
+
           </View>
 
           <View style={styles.view}>
             <Icon name="lock-closed-outline" size={20} color={"#009578"}></Icon>
-            <TextInput style={styles.input} placeholder={"Password"} secureTextEntry={state} autoCapitalize="none"></TextInput>
+            <TextInput 
+              style={styles.input} 
+              value={password}
+              placeholder={"Password"} 
+              secureTextEntry={state} 
+              autoCapitalize="none"
+              onChangeText={(userPassword) => setPassword(userPassword)}
+              >
+
+              </TextInput>
             <Icon name={state ? "eye-off-outline" : "eye-outline"} size={20} color={"#009578"} onPress={() => changeIcon()}></Icon>
           </View>
 
-          <TouchableOpacity style={styles.buttonLogin}>
+          <TouchableOpacity style={styles.buttonLogin} onPress={() => login(email, password)}>
             <Text style={styles.textLogin} >LOGIN</Text>
           </TouchableOpacity>
 
@@ -62,12 +74,8 @@ export default function Signin({ navigation }) {
           </TouchableOpacity>
 
         </View>
-
-        <View style={styles.bottom} >
-          <TouchableOpacity onPress={goToHome}>
-            <Text style={styles.textSignup}>CONTINUE WITHOUT LOGIN</Text>
-          </TouchableOpacity>
-        </View>
+      
+        
 
       </ScrollView>
     </SafeAreaView>

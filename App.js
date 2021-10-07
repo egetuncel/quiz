@@ -30,12 +30,15 @@ import {
   LearnMoreLinks,
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
-import Navigator from './HomeStack';
+import Route from './Route';
+import { AuthProvider } from './AuthProvider';
+import 'react-native-gesture-handler';
 
 function App(){
   return (
-    
-<Navigator></Navigator>
+   <AuthProvider>
+      <Route></Route>
+    </AuthProvider>
 )
 }
 

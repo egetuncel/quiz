@@ -1,10 +1,20 @@
 import React, { Component } from 'react'
-import { Text, TextInput, View, StyleSheet, TouchableOpacity } from 'react-native'
+import { Text, TextInput, View, StyleSheet, TouchableOpacity, ScrollView } from 'react-native'
 import Icon from "react-native-vector-icons/Ionicons"
 
-export class Forgot extends Component {
-    render() {
+export function Forgot ( { navigation } ) {
+  
+  const ClosePage = () => {
+    navigation.goBack();
+  }
+
+   
         return (
+          <ScrollView>
+            <TouchableOpacity style={{ marginHorizontal: 15, marginTop: 50 }} onPress={ClosePage}>
+            <Icon name="chevron-back-outline" size={35}></Icon>
+            </TouchableOpacity>
+
             <View style={styles.container}>
                 
                 <Text style={styles.title}>FORGOT PASSWORD?</Text>
@@ -19,9 +29,10 @@ export class Forgot extends Component {
                 </TouchableOpacity>
                 
             </View>
+            </ScrollView>
         )
     }
-}
+
 
 const styles = StyleSheet.create({
     container: {

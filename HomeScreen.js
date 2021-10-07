@@ -1,34 +1,52 @@
-import React, { Component } from 'react'
+import React, { useContext, useState, useEffect } from 'react'
 import { Text, View, SafeAreaView, StyleSheet, ScrollView, TouchableOpacity} from 'react-native'
 import Icon from "react-native-vector-icons/Ionicons"
 import { Divider } from 'react-native-elements/dist/divider/Divider'
+import { AuthContext, AuthProvider } from './AuthProvider';
+import firestore from '@react-native-firebase/firestore';
+import auth from "@react-native-firebase/auth";
 
-export default function HomeScreen() {
+ export default function HomeScreen({navigation}) {
+    const {user, setUser} = useContext(AuthContext)
+   
+    const goToQuiz = () => {
+        navigation.navigate("Quiz");
+    }
+
+    const getUser = async () => {
+        list = [];
+
+        const userDocument = await firestore().collection("users").doc(user.uid).get();
+        data = userDocument.data();
+        console.log(data);
+    }
+    
+    useEffect(() => {
+      getUser();
+    }, [])
+ 
     return (
-        <View>
-        <SafeAreaView style={{  backgroundColor: "#009578" }}>
-        <View style={styles.header}>
-        
-            <View style={styles.logo}>
-            <Icon name="person-outline" size={22}></Icon>
-            </View>
-            <Text style={styles.text}>SA</Text>
-        
+        <SafeAreaView style={{flex:1, backgroundColor:"white"}}>
+        <View style={{ paddingTop: 50, paddingHorizontal: 20 }}> 
+        <Text style={styles.text}> {user.uid}</Text>
+        <Text style={{ color: "090c0d", fontSize: 29, fontWeight:"bold", paddingTop:5 }}>QUIZ</Text>
         </View>
-        </SafeAreaView>
+        
         <View style={styles.container}>
             <View style={styles.viewStyle}>
-                <TouchableOpacity>
-                <Icon name="add-outline" size={80}></Icon>
+                <TouchableOpacity  onPress={goToQuiz}>
+                <Icon name="add-outline" size={50}></Icon>
                 </TouchableOpacity>
-                <Divider orientation="vertical" color="black" style={{marginVertical: 15 }}></Divider>
-                <Text style={{marginLeft:20, fontSize:18, fontWeight:"500"}}>START THE QUIZ!</Text>
+                <Divider orientation="vertical" color="white" style={{marginVertical: 10 }}></Divider>
+                <Text style={{color:"white", marginLeft:20, fontSize:18, fontWeight:"400"}}>START THE QUIZ!</Text>
+               
             </View>
             
         </View>
-        </View>
+      
     
-    
+       
+        </SafeAreaView>
     )
 }
 
@@ -57,10 +75,8 @@ const styles = StyleSheet.create({
       container: {
         flexDirection: "column",
         paddingHorizontal: 20,
-        
-        
-        
         marginTop: 32,
+      
         
     },
     viewStyle : {
@@ -75,4 +91,10 @@ const styles = StyleSheet.create({
         alignItems:"center",
         paddingLeft: 10,
     },
+    text : {
+        fontWeight: "500",
+        color:"#5d616f",
+        textTransform: "capitalize",
+        fontSize:14,
+    }
 })

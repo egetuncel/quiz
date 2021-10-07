@@ -1,36 +1,28 @@
-import React, { Component, useState } from 'react'
+import React, { Component, useState, useContext } from 'react'
 import { StyleSheet, Text, View, TextInput, ScrollView, TouchableOpacity } from 'react-native'
+import { AuthContext } from './AuthProvider';
 import Icon from "react-native-vector-icons/Ionicons"
+import firestore from '@react-native-firebase/firestore';
 
 
 export default function Signup({ navigation }) {
-  // state = {
-  //   icon: "eye-off-outline",
-  //   password: true
-  // }
-
-  // state2 = {
-  //   icon2: "eye-off-outline",
-  //   password2: true
-  // }
-
+  
   const [state, setState] = useState(true);
   const [state2, setState2] = useState(true);
+  const [username, setUsername] = useState();
+  const [email, setEmail] = useState();
+  const [password, setPassword] = useState();
+  const [confirmPassword, setConfirmPassword] = useState();
 
+  const { register } = useContext(AuthContext);
 
   const changeIcon1 = () => {
-    // this.setState(prevState => ({
-    //   icon: prevState.icon === "eye-outline" ? "eye-off-outline" : "eye-outline",
-    //   password: !prevState.password
-    // }));
+    
     setState(!state);
 
   }
   const changeIcon2 = () => {
-    // this.setState(prevState => ({
-    //   icon2: prevState.icon === "eye-outline" ? "eye-off-outline" : "eye-outline",
-    //   password2: !prevState.password
-    // }));
+   
     setState2(!state2);
 
   }
@@ -38,6 +30,12 @@ export default function Signup({ navigation }) {
     navigation.goBack();
   }
 
+  const goToSignIn = () => {
+    
+    register(email, password, username);
+    
+   
+  } 
 
   return (
     <ScrollView>
@@ -52,28 +50,57 @@ export default function Signup({ navigation }) {
 
         <View style={styles.view} >
           <Icon name="person-outline" size={20} color={"#009578"} ></Icon>
-          <TextInput style={styles.input} placeholder={"Username"} keyboardType={"email-address"} autoCapitalize="none"></TextInput>
+          <TextInput style={styles.input}
+            value={username}
+            placeholder={"Username (Optional)"}
+            keyboardType={"default"}
+            autoCapitalize="none"
+            onChangeText={(userName) => setUsername(userName)}>
+          </TextInput>
         </View>
 
         <View style={styles.view} >
           <Icon name="mail-outline" size={20} color={"#009578"} ></Icon>
-          <TextInput style={styles.input} placeholder={"Email"} keyboardType={"email-address"} autoCapitalize="none"></TextInput>
+          <TextInput 
+            style={styles.input}
+            value={email}
+            placeholder={"Email"}
+            keyboardType={"email-address"}
+            autoCapitalize="none"
+            onChangeText={(userEmail) => setEmail(userEmail)}>
+          </TextInput>
         </View>
 
         <View style={styles.view}>
           <Icon name="lock-closed-outline" size={20} color={"#009578"}></Icon>
-          <TextInput style={styles.input} placeholder={"Password"} secureTextEntry={state} autoCapitalize="none"></TextInput>
+          <TextInput 
+            style={styles.input}
+            value={password}
+            placeholder={"Password"} 
+            secureTextEntry={state} 
+            autoCapitalize="none"
+            onChangeText={(userPassword) => setPassword(userPassword)}>
+          </TextInput>
           <Icon name={state ? "eye-off-outline" : "eye-outline"} size={20} color={"#009578"} onPress={() => changeIcon1()}></Icon>
         </View>
 
         <View style={styles.view}>
           <Icon name="lock-closed-outline" size={20} color={"#009578"}></Icon>
-          <TextInput style={styles.input} placeholder={"Password"} secureTextEntry={state2} autoCapitalize="none"></TextInput>
+          <TextInput 
+            style={styles.input} 
+            value={confirmPassword}
+            placeholder={"Password"} 
+            secureTextEntry={state2} 
+            autoCapitalize="none"
+            onChangeText={(userPassword) => setConfirmPassword(userPassword)}>
+          </TextInput>
           <Icon name={state2 ? "eye-off-outline" : "eye-outline"} size={20} color={"#009578"} onPress={() => changeIcon2()}></Icon>
         </View>
 
-        <TouchableOpacity style={styles.buttonLogin}>
-          <Text style={styles.textLogin}>SIGNUP</Text>
+        <TouchableOpacity style={styles.buttonLogin} onPress={goToSignIn}>
+          <Text 
+          style={styles.textLogin}
+         >SIGNUP</Text>
         </TouchableOpacity>
 
       </View>

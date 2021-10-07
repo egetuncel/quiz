@@ -10,30 +10,32 @@ const SettingsAccount = () => {
 
     return (
         <View>
-            <Text style={{fontSize:20,fontWeight:"bold",paddingTop:15, paddingLeft:12, color:"black"}}>Account</Text>
+            <Text h1 style={{fontSize:20,fontWeight:"bold",paddingTop:15, paddingLeft:12, color:"white"}}>Account</Text>
 
-            <View style={{flexDirection:"column",paddingTop:20,}}>
+            <View style={{flexDirection:"column",paddingTop:20, paddingBottom:20,}}>
                 <TouchableOpacity>
                 <View style={styles.viewStyle}>
                     <Icon name="lock-closed-outline" size={20}></Icon>
-                    <Divider orientation="vertical" color="black" style={styles.dividerSmall}></Divider>
+                    <Divider orientation="vertical" color="white" style={styles.dividerSmall}></Divider>
                     <Text style={styles.textStyle}>Change Password</Text>
                     <Icon name="chevron-forward-outline" style={styles.icon} size={20}></Icon>
                 </View>
                 </TouchableOpacity>
-                <Divider orientation="horizontal" color="black" style={styles.dividerBig} ></Divider>
+                <Divider orientation="horizontal" color="white" style={styles.dividerBig} ></Divider>
                 
                 <TouchableOpacity>
                 <View style={styles.viewStyle}>
                     <Icon name="notifications-outline" size={20}></Icon>
-                    <Divider orientation="vertical" color="black" style={styles.dividerSmall}></Divider>
+                    <Divider orientation="vertical" color="white" style={styles.dividerSmall}></Divider>
                     <Text style={styles.textStyle}>Notifications</Text>
                     
                     <Icon name="chevron-forward-outline" style={styles.icon} size={20}></Icon>
                     
                 </View>
                 </TouchableOpacity>
+
             </View>
+            
         </View>
     )
 }
@@ -47,13 +49,13 @@ const styles = StyleSheet.create({
     },
     textStyle : {
         fontSize:17,
-        fontWeight:"300",
+        fontWeight:"400",
        
-        color: "black"
+        color: "white"
     },
     dividerBig : {
         marginHorizontal: 15,
-        marginVertical: 15
+        marginVertical: 10
     },
     dividerSmall : {
         marginHorizontal: 10,

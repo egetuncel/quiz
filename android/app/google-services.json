@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "880458865113",
+    "project_id": "quiz-fea36",
+    "storage_bucket": "quiz-fea36.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:880458865113:android:63b9b8e202525df54ea1c8",
+        "android_client_info": {
+          "package_name": "com.quiz"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "880458865113-nprjcfc5uqcp6009ppuocuqrc9172h9u.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDesvqO8IdxPazgYE_JiM_-aWXOCeFIr0Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "880458865113-nprjcfc5uqcp6009ppuocuqrc9172h9u.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "880458865113-s6hr2jf3h6bppsq30gh4bo0a0eh5vmjr.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "org.reactjs.native.example.quiz"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
